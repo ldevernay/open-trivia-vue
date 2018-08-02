@@ -1,39 +1,49 @@
 const https = require('https');
 const url = 'https://opentdb.com/api.php?amount=5&category=18';
 
-https
-  .get(url, res => {
-    let body = '';
+let questions_api = () => {
+  let result;
 
-    res.on('data', chunk => (body += chunk));
+  https
+    .get(url, res => {
+      let body = '';
 
-    res.on('end', function() {
-      let openTriviaResponse = JSON.parse(body);
-      questions(openTriviaResponse.results);
-    });
-  })
-  .on('error', e => {
-    return e;
-  });
+      res.on('data', chunk => (body += chunk));
 
-let questions = res => {
-  let results = [];
-  res.map(question => {
-    let quest = {};
-    let answers = [];
-    quest['question'] = question['question'];
-    answers.push({
-      answer: question['correct_answer'],
-      correct: true
-    });
-    question['incorrect_answers'].map(ans => {
-      answers.push({
-        answer: ans,
-        correct: false
+      res.on('end', function() {
+        let openTriviaResponse = JSON.parse(body);
+        result = questions(openTriviaResponse.results);
       });
+    })
+    .on('error', e => {
+      return e;
     });
-    quest['answers'] = answers;
-    results.push(quest);
-  });
-  return results;
+
+  let questions = res => {
+    let results = [];
+    res.map(question => {
+      let quest = {};
+      let answers = [];
+      quest['question'] = question['question'];
+      answers.push({
+        answer: question['correct_answer'],
+        correct: true
+      });
+      question['incorrect_answers'].map(ans => {
+        answers.push({
+          answer: ans,
+          correct: false
+        });
+      });
+      quest['answers'] = answers;
+      results.push(quest);
+    });
+    return results;
+  };
+
+  return result;
+};
+
+export default {
+  questions_api
 };

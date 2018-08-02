@@ -1,6 +1,6 @@
 <template>
   <div class="game">
-    <h1>Welcome to the game, counter = {{counter}}</h1>
+    <h1>Welcome to the game, questions : {{questions}}</h1>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: 'Game',
   props: {
-    counter: Number
+    questions: Array
   }
 }
 </script>
