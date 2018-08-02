@@ -1,14 +1,14 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div class="game">
+    <h1>Welcome to the game, counter = {{counter}}</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Game',
   props: {
-    msg: String
+    counter: Number
   }
 }
 </script>

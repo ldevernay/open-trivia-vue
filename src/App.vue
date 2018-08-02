@@ -1,17 +1,33 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="Open Trivia Quizz, Vue.js version"/>
+    <Game v-if="shown" :counter="counter"/>
+    <button v-on:click="start">Start</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/HelloWorld.vue';
+import Game from './components/Game.vue';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    HelloWorld,
+    Game
+  },
+  data() {
+    return {
+    counter: -1,
+    shown: false
+    }
+  },
+  methods: {
+    start: function() {
+      this.counter = 0;
+      this.shown = true;
+      console.log(this.counter);
+    }
   }
 }
 </script>
