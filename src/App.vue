@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HelloWorld msg="Open Trivia Quizz, Vue.js version"/>
-    <Game v-if="shown" :questions="questions"/>
+    <Game v-if="shown" :questions="questions" :counter="counter"/>
     <button v-on:click="start">Start</button>
   </div>
 </template>
