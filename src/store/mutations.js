@@ -19,7 +19,6 @@ export const mutations = {
       } else {
         state.counter = -1;
         state.msg = 'Congratulations, you just finished the game';
-        state.score = 0;
         state.shown = false;
       }
     }
