@@ -2,15 +2,16 @@
   <div id="app">
     <HelloWorld msg="Open Trivia Quizz, Vue.js version"/>
     <Game v-if="shown" :questions="questions" :counter="counter"/>
-    <button v-on:click="start">Start</button>
+    <button v-on:click="start" v-if="!shown">Start</button>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
 import Game from './components/Game.vue';
-// import {questions_api} from './sandbox/trivia_api.js';
+
 const https = require('https');
+const _ = require('lodash');
 
 export default {
   name: 'app',
@@ -67,7 +68,7 @@ export default {
           correct: false
         });
       });
-      quest['answers'] = answers;
+      quest['answers'] = _.shuffle(answers);
       results.push(quest);
     });
     this.questions = results;
