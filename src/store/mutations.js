@@ -12,6 +12,7 @@ export const mutations = {
       state.counter = -1;
       state.msg = `Wrong answer, your final score is ${this.state.score}!`;
       state.shown = false;
+      state.questions = [{}];
     } else {
       state.score++;
       if (state.counter < 4) {
@@ -20,6 +21,7 @@ export const mutations = {
         state.counter = -1;
         state.msg = 'Congratulations, you just finished the game';
         state.shown = false;
+        state.questions = [{}];
       }
     }
   },
