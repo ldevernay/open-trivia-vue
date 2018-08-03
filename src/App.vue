@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <HelloWorld msg="Open Trivia Quizz, Vue.js version"/>
-    <Game v-if="shown" :questions="questions" :counter="counter"/>
-    <button v-on:click="start" v-if="!shown">Start</button>
+    <Game v-if="this.$store.state.shown" />
+    <button v-on:click="start" v-if="!this.$store.state.shown">Start</button>
   </div>
 </template>
 
@@ -19,18 +19,11 @@ export default {
     HelloWorld,
     Game
   },
-  data() {
-    return {
-    counter: -1,
-    shown: false,
-    questions: []
-    }
-  },
   methods: {
     start: function() {
-      this.counter = 0;
-      this.shown = true;
-      this.questions_api();
+     this.$store.dispatch('start');
+     console.log(this.questions_api());
+     console.log(this.$store.state.counter);
     },
     questions_api: function() {
     const url = 'https://opentdb.com/api.php?amount=5&category=18';
@@ -71,7 +64,8 @@ export default {
       quest['answers'] = _.shuffle(answers);
       results.push(quest);
     });
-    this.questions = results;
+     this.$store.dispatch('setQuestions', results);
+     console.log(this.$store.state.questions);
   };
 
     }
