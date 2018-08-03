@@ -10,15 +10,17 @@ export const mutations = {
   [types.ANSWER](state, score_payload) {
     if (!score_payload) {
       state.counter = -1;
-      state.msg = `Wrong answer, your final score is ${this.score}!`;
+      state.msg = `Wrong answer, your final score is ${this.state.score}!`;
       state.shown = false;
     } else {
       state.score++;
-      if (state.counter < 5) {
+      if (state.counter < 4) {
         state.counter++;
       } else {
         state.counter = -1;
         state.msg = 'Congratulations, you just finished the game';
+        state.score = 0;
+        state.shown = false;
       }
     }
   },
