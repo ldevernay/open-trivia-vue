@@ -9,7 +9,8 @@ const state = {
   score: 0,
   counter: 0,
   questions: [],
-  shown: false
+  shown: false,
+  msg: 'Open Trivia Quizz, Vue.js version'
 };
 
 export default new Vuex.Store({

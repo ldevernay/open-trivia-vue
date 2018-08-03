@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Open Trivia Quizz, Vue.js version"/>
+    <Title />
     <Game v-if="this.$store.state.shown" />
     <button v-on:click="start" v-if="!this.$store.state.shown">Start</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import Title from './components/Title.vue';
 import Game from './components/Game.vue';
 
 const https = require('https');
@@ -16,7 +16,7 @@ const _ = require('lodash');
 export default {
   name: 'app',
   components: {
-    HelloWorld,
+    Title,
     Game
   },
   methods: {
