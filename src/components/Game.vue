@@ -1,7 +1,7 @@
 <template>
   <div class="game">
     <h2>Let's play a game!</h2>
-    <!-- <h3> Score : {{this.$store.state.score}} -->
+    <h3> Score : {{this.$store.state.score}}</h3>
       <Question :question='this.$store.state.questions[this.$store.state.counter]["question"]' />
       <Answer v-for='(answer, index) in this.$store.state.questions[this.$store.state.counter]["answers"]' :answer='answer' :key='index' />
   </div>
