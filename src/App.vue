@@ -2,7 +2,7 @@
   <div id="app">
     <Title />
     <Game v-if="this.$store.state.shown" />
-    <button v-on:click="start" v-if="!this.$store.state.shown">Start</button>
+    <b-button v-on:click="start" v-if="!this.$store.state.shown" size="lg" >Start</b-button>
   </div>
 </template>
 
@@ -12,6 +12,7 @@ import Game from './components/Game.vue';
 
 const https = require('https');
 const _ = require('lodash');
+const he = require('he');
 
 export default {
   name: 'app',
@@ -49,14 +50,14 @@ export default {
     res.map(question => {
       let quest = {};
       let answers = [];
-      quest['question'] = question['question'];
+      quest['question'] = he.decode(question['question']);
       answers.push({
-        answer: question['correct_answer'],
+        answer: he.decode(question['correct_answer']),
         correct: true
       });
       question['incorrect_answers'].map(ans => {
         answers.push({
-          answer: ans,
+          answer: he.decode(ans),
           correct: false
         });
       });
