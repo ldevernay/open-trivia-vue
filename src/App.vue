@@ -22,8 +22,7 @@ export default {
   methods: {
     start: function() {
      this.$store.dispatch('start');
-     console.log(this.questions_api());
-     console.log(this.$store.state.counter);
+     this.questions_api();
     },
     questions_api: function() {
     const url = 'https://opentdb.com/api.php?amount=5&category=18';
@@ -65,7 +64,6 @@ export default {
       results.push(quest);
     });
      this.$store.dispatch('setQuestions', results);
-     console.log(this.$store.state.questions);
   };
 
     }

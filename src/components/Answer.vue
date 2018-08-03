@@ -1,8 +1,6 @@
 <template>
   <div class="answer">
-    <h4>
-      {{answer["answer"]}}
-    </h4>
+    <button v-on:click='give_answer()'>{{answer["answer"]}}</button>
   </div>
 </template>
 
@@ -13,8 +11,10 @@ export default {
   props: {
     answer: Object
   },
-  data() {
-    return {};
+  methods: {
+    give_answer: function(){
+      this.$store.dispatch('answer', this.answer["correct"]);
+    }
   }
 }
 </script>

@@ -1,6 +1,7 @@
 <template>
   <div class="game">
     <h2>Let's play a game!</h2>
+    <!-- <h3> Score : {{this.$store.state.score}} -->
       <Question :question='this.$store.state.questions[this.$store.state.counter]["question"]' />
       <Answer v-for='(answer, index) in this.$store.state.questions[this.$store.state.counter]["answers"]' :answer='answer' :key='index' />
   </div>
@@ -15,26 +16,7 @@ export default {
   components: {
     Answer,
     Question
-  },
-  // props: {
-  //   questions: {
-  //     default: [{
-  //       'question': 'Want to play a game?',
-  //       'answers': [
-  //         {'question': 'yes', 'correct': true},
-  //         {'question': 'no', 'correct': false}
-  //       ]
-  //     }],
-  //     type: Array
-  //   },
-  //   counter: {
-  //     default: 0,
-  //     type: Number
-  //   }
-  // },
-  // data() {
-  //   return {};
-  // }
+  }
 }
 </script>
 
