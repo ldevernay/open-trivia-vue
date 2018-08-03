@@ -1,8 +1,6 @@
 <template>
-  <div class="row">
-    <div class="col-md-4 pb-2">
-      <b-button v-on:click='give_answer()' size="lg" >{{answer["answer"]}}</b-button>
-    </div>
+  <div>
+    <b-button v-on:click='give_answer()' size="lg" >{{answer["answer"]}}</b-button>
   </div>
 </template>
 
